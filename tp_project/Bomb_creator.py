@@ -1,5 +1,6 @@
 from Creator import Creator
 from Globals import field
+from FieldObject import FieldObject
 
 
 class Bomb_creator(Creator):
