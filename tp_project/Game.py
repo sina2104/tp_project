@@ -2,66 +2,25 @@ from Rendzu import Rendzu
 
 from Fruit_creator import Fruit_creator
 
-from Creator import Creator
+from Globals import field
 
-from Remove_fruit import Remove_fruit
+from Fruit import Fruit
 
 from Bomb_creator import Bomb_creator
-
-field = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
-         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
-         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
-         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
-         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
-         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
-         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
-         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
-         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
-         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
-         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
-         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
-         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
-         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
-         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-
-
-
-
 
 class Game():
 
     a = Rendzu()
-
-    e = Bomb_creator()
-
-    d = Remove_fruit()
-
-    while (not a.check() and not a.run() and not a.check_bomb()):
-
+    b = Bomb_creator()
+    c = Fruit_creator()
+    d = Fruit()
+    fruits_list = []
+    bombs_list = []
+    while not a.check() and not a.run() and not a.check_bomb():
         a.run()
-
-        d.create_Fruit()
-
-        e.create_Bomb()
-
-        d.remove()
-
-
-
+        fruits_list.append(c.create_Fruit())
+        b.create_Bomb()
+        fruits_list = d.remove(fruits_list)
 
 
 b = Game()
