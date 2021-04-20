@@ -1,6 +1,10 @@
 from Creator import Creator
+
 from Globals import field
+
 from FieldObject import FieldObject
+
+from Bomb import Bomb
 
 
 class Bomb_creator(Creator):
@@ -17,5 +21,3 @@ class Bomb_creator(Creator):
         bomb.y = y
         Creator.create_obj(self, x, y, name)
         return bomb
-
-
