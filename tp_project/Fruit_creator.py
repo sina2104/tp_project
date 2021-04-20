@@ -1,5 +1,8 @@
 from Creator import Creator, field
 
+from FieldObject import FieldObject
+
+
 class Fruit_creator(Creator):
 
     def __init__(self):
@@ -39,7 +42,3 @@ class Fruit_creator(Creator):
             self.fruits_list.append([x, y])
 
             Creator.create_obj(self, x, y, name)
-
-
-
-
