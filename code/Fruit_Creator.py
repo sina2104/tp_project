@@ -11,13 +11,7 @@ class Fruit_creator(Creator):
 
     def create_Fruit(self):
 
-        obj = FieldObject()
-        name, x, y = obj.create("fruit")
-
-        fruit = Fruit()
-        fruit.name = name
-        fruit.x = x
-        fruit.y = y
-        Creator.create_obj(self, x, y, name)
-        return fruit
+        fruit = Fruit.render(self)
+        Creator.create_obj(self, fruit.x, fruit.y, fruit.name)
+        return fruit  
 

@@ -11,8 +11,17 @@ class Fruit(FieldObject):
         self.y = 0
         super().__init__()
 
-    def remove(self, fruits_list):    
+    def render(self):
+        obj = FieldObject()
+        name, x, y = obj.create("fruit")
+    
+        self.name = name
+        self.x = x
+        self.y = y
+        return self
 
+    def remove(self, fruits_list): 
+        
         for i in range(len(fruits_list)):
             self.x = fruits_list[i].x
             self.y = fruits_list[i].y

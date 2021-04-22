@@ -33,31 +33,40 @@ class Rendzu():
             self.move = self.move + 1 - your_move_again
 
     def check(self):
+        FIELD_LEN = 14
+
         minimum = min(self.last_point)
 
         start = (self.last_point[0] - minimum, self.last_point[1] - minimum)
 
         diagonal_arr1 = [field[start[0] + i][start[1] + i] for i in range(15 - max(start))]
-
-        if self.last_point[0] + self.last_point[1] < 14:
+        # diagonal_arr1 - массив элементов в поле, которые стоят по диагонали 
+        # (по направлению сверху слева - снизу справа), переменная создается для 
+        # проверки не закончилась ли игра. Если в этом массиве 5 единиц или 5 двоек подряд - 
+        # игра закончилась
+        if self.last_point[0] + self.last_point[1] < FIELD_LEN:
 
             start = (0, self.last_point[0] + self.last_point[1])
 
-        if self.last_point[0] + self.last_point[1] > 14:
+        if self.last_point[0] + self.last_point[1] > FIELD_LEN:
 
-            start = ((self.last_point[0] + self.last_point[1]) % 14, 14)
+            start = ((self.last_point[0] + self.last_point[1]) % FIELD_LEN, FIELD_LEN)
 
-        if self.last_point[0] + self.last_point[1] == 14:
+        if self.last_point[0] + self.last_point[1] == FIELD_LEN:
 
-            start = (0, 14)
+            start = (0, FIELD_LEN)
 
         diagonal_arr2 = [field[start[0] + i][start[1] - i] for i in range(start[1] - start[0] + 1)]
+        # аналогично diagonal_arr1, только направление сверху справа - снизу слева 
 
-        vertical_arr = [field[self.last_point[0]][i] for i in range(15)]
+        vertical_arr = [field[self.last_point[0]][i] for i in range(FIELD_LEN + 1)]
+        # аналогично diagonal_arr1, только направление по вертикали
 
-        horizontal_arr = [field[i][self.last_point[1]] for i in range(15)]
+        horizontal_arr = [field[i][self.last_point[1]] for i in range(FIELD_LEN + 1)]
+        # аналогично diagonal_arr1, только направление по горизонтали
 
         all_arr = diagonal_arr1 + [0] + diagonal_arr2 + [0] + vertical_arr + [0] + horizontal_arr
+        # все массивы вместе, в которых ищем [1, 1, 1, 1, 1] или [2, 2, 2, 2, 2]. Если находим - игра заканчивается
 
         for i in range(len(all_arr) - self.win_strike_lenth):
 

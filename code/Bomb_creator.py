@@ -9,11 +9,6 @@ class Bomb_creator(Creator):
         super().__init__()
 
     def create_Bomb(self):
-        obj = FieldObject()
-        name, x, y = obj.create('B')
-        bomb = Bomb()
-        bomb.name = 'B'
-        bomb.x = x
-        bomb.y = y
-        Creator.create_obj(self, x, y, name)
-        return bomb
+        bomb = Bomb.render(self)
+        Creator.create_obj(self, bomb.x, bomb.y, bomb.name)
+        return bomb  
