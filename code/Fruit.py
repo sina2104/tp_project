@@ -6,18 +6,16 @@ import random
 
 class Fruit(FieldObject):
     def __init__(self):
-        self.name = ''
+        self.name = 'fruit'
         self.x = 0
         self.y = 0
         super().__init__()
 
     def render(self):
+
         obj = FieldObject()
-        name, x, y = obj.create("fruit")
+        self.name, self.x, self.y = obj.create(self.name)
     
-        self.name = name
-        self.x = x
-        self.y = y
         return self
 
     def remove(self, fruits_list): 
@@ -27,9 +25,9 @@ class Fruit(FieldObject):
             self.y = fruits_list[i].y
             self.name = fruits_list[i].name
             random_number = random.random()
-            if random_number > 0.3:
+            if random_number > 0.6:
                 if self.name == 'W':
-                    if random_number > 0.6:
+                    if random_number > 0.8:
                         field[self.x][self.y] = 0
                         fruits_list.pop(i)
                         return fruits_list

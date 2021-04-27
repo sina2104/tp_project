@@ -23,8 +23,7 @@ fruits_list = []
 bombs_list = []
 while not rendzu.check() and not rendzu.run() and not rendzu.check_bomb():
     rendzu.run()
-    fruits_list.append(fruit_creator.create_Fruit())
-    bomb_creator.create_Bomb()
+    fruits_list.append(fruit_creator.create_obj())
+    bomb_creator.create_obj()
     fruits_list = fruit.remove(fruits_list)
-    for i in range(len(fruits_list)):
-            print(fruits_list[i].x, fruits_list[i].y)
+    

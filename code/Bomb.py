@@ -2,16 +2,16 @@ from FieldObject import FieldObject
 
 class Bomb(FieldObject):
     def __init__(self):
-        self.name = ''
+        self.name = 'B'
         self.x = 0
         self.y = 0
         super().__init__()
 
+
     def render(self):
+        
         obj = FieldObject()
-        name, x, y = obj.create('B')
-    
-        self.name = 'B'
-        self.x = x
-        self.y = y
+        self.name, self.x, self.y = obj.create(self.name)
+        
+        
         return self
