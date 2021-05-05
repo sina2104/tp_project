@@ -1,43 +1,45 @@
+import random
 from FieldObject import FieldObject
 
-from Globals import field
-
-import random
 
 class Fruit(FieldObject):
+    """
+    Concrete product
+    В нем определяем методы,
+    описанные в FieldObject
+    """
+
     def __init__(self):
-        self.name = 'fruit'
-        self.x = 0
-        self.y = 0
-        super().__init__()
+        self.list_of_fruits = ["W", "L"]
+        self.name = random.choice(self.list_of_fruits)  # рисунок на поле
 
-    def render(self):
+        # координаты на поле:
+        self.x = random.randint(-1, 14)
+        self.y = random.randint(-1, 14)
 
-        obj = FieldObject()
-        self.name, self.x, self.y = obj.create(self.name)
-    
-        return self
+    def render(self, field):
+        """
 
-    def remove(self, fruits_list): 
-        
-        for i in range(len(fruits_list)):
-            self.x = fruits_list[i].x
-            self.y = fruits_list[i].y
-            self.name = fruits_list[i].name
+        :param field: поле игры
+        :return: ничего
+        """
+        field[self.x][self.y] = self.name
+        return None
+
+    def remove(self, field, field_objects_fruits):
+        """
+        Реализуйте тут свой remove
+        """
+        import random
+        for i in range(len(field_objects_fruits)):
+            current_fruit = field_objects_fruits[i].name
             random_number = random.random()
-            if random_number > 0.6:
-                if self.name == 'W':
-                    if random_number > 0.8:
-                        field[self.x][self.y] = 0
-                        fruits_list.pop(i)
-                        return fruits_list
+            if random_number > 0.4:
+                if current_fruit == 'W':
+                    if random_number > 0.7:
+                        field[field_objects_fruits[i].x][field_objects_fruits[i].y] = 0
+                        field_objects_fruits.pop(i)
                 else:
-                    field[self.x][self.y] = 0
-                    fruits_list.pop(i)
-                    return fruits_list
-                if field[self.x][self.y] == 1 or field[self.x][self.y] == 2:
-                    fruits_list.pop(i)
-                    return fruits_list
-        return fruits_list
-
-
+                    field[field_objects_fruits[i].x][field_objects_fruits[i].y] = 0
+                    field_objects_fruits.pop(i)
+            return 0
