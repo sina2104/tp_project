@@ -15,3 +15,9 @@ class ElementMaker:
 
         return context
 
+    def put_element(self, element: ElementContext, field):
+        if isinstance(field[element.unique_state[0]][element.unique_state[1]], int) and\
+                      field[element.unique_state[0]][element.unique_state[1]] != 0:
+            pass
+        else:
+            field[element.unique_state[0]][element.unique_state[1]] = element.flyweight

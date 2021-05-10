@@ -20,4 +20,3 @@ class FlyWeightFactory:
     @property
     def total(self):
         return len(self.flyweights)
-

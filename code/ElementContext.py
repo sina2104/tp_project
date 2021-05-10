@@ -1,5 +1,6 @@
 from ElementFlyWeight import ElementFlyWeight
 
+
 class ElementContext:
 
     def __init__(self, unique_state, flyweight: ElementFlyWeight):
